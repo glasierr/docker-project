@@ -14,13 +14,14 @@ import java.util.Collection;
 
 import static org.springframework.web.bind.annotation.RequestMethod.*;
 
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/drivers", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class DriversResource {
 
     @Autowired
     private DriversRepository driversRepository;
-    
+
     @RequestMapping(method = GET)
     public Collection<Driver> getAll() {
         return driversRepository.findAll();
@@ -30,13 +31,13 @@ public class DriversResource {
     public Driver getDriver(@PathVariable String id) {
         return driversRepository.findByLicenceId(id).orElseThrow(DriverNotFoundException::new);
     }
-    
+
     @RequestMapping(method = POST)
     @ResponseStatus(HttpStatus.CREATED)
     public void createDriver(@RequestBody @Valid Driver driver) {
         driversRepository.save(driver);
     }
-    
+
     @RequestMapping(method = DELETE, path = "/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteDriver(@PathVariable String id) {
