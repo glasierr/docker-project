@@ -1,5 +1,6 @@
 function send() {
 
+    const URL = "http://storage:8080/drivers";
     const licenceId = $("#licence-id").val();
     const name = $("#name").val();
     const surname = $("#surname").val();
@@ -14,7 +15,7 @@ function send() {
             'Content-Type': 'application/json'
         },
         type: "POST",
-        url: "http://localhost:8080/drivers",
+        url: URL,
         data: JSON.stringify({
             licenceId: licenceId,
             name: name,
