@@ -1,13 +1,21 @@
 package vlasenko.violations.drivers.domain;
 
-import org.springframework.data.annotation.Id;
+import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Objects;
 
+@Entity
+@Table(name = "drivers")
 public class Driver implements Serializable {
     
     @Id
+    @NotNull(message = "licence id must not be null")
+    @NotEmpty(message = "licence id must not be empty")
     private String licenceId;
     private String name;
     private String surname;
