@@ -1,22 +1,10 @@
-version: '2.1'
+version: '2'
 services:
   client:
     image: glasierr/js-client
-    networks:
-       default:
-          aliases:
-             - "client"
-    links:
-       - "storage:store"
     ports:
-       - "8081:8081"
+       - 8081:8081
   storage:
     image: glasierr/drivers-storage
-    networks:
-       default:
-          aliases:
-            - "storage"
     ports:
-       - "8080:8080"
-    expose:
-       - "8080"
+       - 8080:8080
