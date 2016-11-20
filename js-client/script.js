@@ -1,6 +1,6 @@
 function send() {
 
-    const URL = "http://storage:8080/drivers";
+    const URL = "http://localhost:8080/drivers";
     const licenceId = $("#licence-id").val();
     const name = $("#name").val();
     const surname = $("#surname").val();
